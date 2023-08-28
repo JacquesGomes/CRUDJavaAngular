@@ -13,7 +13,7 @@ export class DataService {
   constructor(private http: HttpClient) {}
 
   createItem(item: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/items`, item);
+    return this.http.post(`${this.apiUrl}/tarefas`, item);
   }
 
   getItems(): Observable<any[]> {
@@ -21,14 +21,14 @@ export class DataService {
   }
 
   getItem(id: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}/items/${id}`);
+    return this.http.get(`${this.apiUrl}/tarefas/${id}`);
   }
 
   updateItem(id: number, newData: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/items/${id}`, newData);
+    return this.http.put(`${this.apiUrl}/tarefas/${id}`, newData);
   }
 
   deleteItem(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/items/${id}`);
+    return this.http.delete(`${this.apiUrl}/tarefas/${id}`);
   }
 }
