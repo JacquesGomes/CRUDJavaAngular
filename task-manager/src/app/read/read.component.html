@@ -1,0 +1,13 @@
+<h1>Read Items</h1>
+<div *ngIf="items.length > 0; else noItems">
+  <ul>
+    <li *ngFor="let item of items">
+      {{ item.title }} - {{ item.description }}
+      <a [routerLink]="['/update', item.id]">Edit</a>
+      <a [routerLink]="['/delete', item.id]">Delete</a>
+    </li>
+  </ul>
+</div>
+<ng-template #noItems>
+  <p>No items available.</p>
+</ng-template>
