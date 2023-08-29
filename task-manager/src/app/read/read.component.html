@@ -4,10 +4,26 @@
     <li *ngFor="let item of items">
       {{ item.title }} - {{ item.description }}
       <a class="edit-link" (click)="openEditModal(item)">Edit</a>
-      <a [routerLink]="['/delete', item.id]">Delete</a>
+      <a (click)="deleteItem(item.id)">Delete</a>
     </li>
   </ul>
 </div>
+
+
+<div class="create-form">
+  <h2>Create Item</h2>
+  <div>
+    <label>Name:</label>
+    <input [(ngModel)]="title" />
+  </div>
+  <div>
+    <label>Description:</label>
+    <input [(ngModel)]="description" />
+  </div>
+  <button (click)="createItem()">Save</button>
+</div>
+
+
 
 <!-- Modal overlay -->
 <div class="overlay" *ngIf="isEditModalOpen">
