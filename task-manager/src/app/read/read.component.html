@@ -1,49 +1,51 @@
-<h1>Read Items</h1>
-<div *ngIf="items.length > 0; else noItems">
+
+<div *ngIf="items.length > 0; else noItems" class="form">
+  <h2>Tarefas cadastradas</h2>
   <ul>
     <li *ngFor="let item of items">
-      {{ item.title }} - {{ item.description }}
-      <a class="edit-link" (click)="openEditModal(item)">Edit</a>
-      <a (click)="deleteItem(item.id)">Delete</a>
+      Título: {{ item.title }} <br> Descrição: {{ item.description }}
+      <button class="edit-link" (click)="openEditModal(item)">Editar</button>
+      <button (click)="deleteItem(item.id)">Deletar</button>
     </li>
   </ul>
 </div>
 
-
 <div class="create-form">
-  <h2>Create Item</h2>
-  <div>
-    <label>Name:</label>
-    <input [(ngModel)]="title" />
-  </div>
-  <div>
-    <label>Description:</label>
-    <input [(ngModel)]="description" />
-  </div>
-  <button (click)="createItem()">Save</button>
-</div>
 
-
-
-<!-- Modal overlay -->
-<div class="overlay" *ngIf="isEditModalOpen">
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close-btn" (click)="closeEditModal()">&times;</span>
-    <h2>Edit Item</h2>
+  <div class="form">
+    <h2>Criar tarefa</h2>
     <div>
       <label>Name:</label>
-      <input [(ngModel)]="selectedItem.title" />
+      <input [(ngModel)]="title" />
     </div>
     <div>
       <label>Description:</label>
+      <input [(ngModel)]="description" />
+    </div>
+    <button (click)="createItem()">Salvar</button>
+  </div>
+
+</div>
+
+<div class="overlay" *ngIf="isEditModalOpen">
+
+  <div class="modal-content form">
+    <span class="close-btn" (click)="closeEditModal()">&times;</span>
+    <h2>Editar Item</h2>
+    <div>
+      <label>Título:</label>
+      <input [(ngModel)]="selectedItem.title" />
+    </div>
+    <div>
+      <label>Descrição:</label>
       <input [(ngModel)]="selectedItem.description" />
     </div>
-    <button (click)="updateItem()">Save</button>
+    <button (click)="updateItem()">Salvar</button>
   </div>
 </div>
 
+
 <ng-template #noItems>
-  <p>No items available.</p>
+  <p>Nenhuma tarefas disponível.</p>
 </ng-template>
 
